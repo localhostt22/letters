@@ -1,0 +1,1055 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0c0907;
+    color: #eadfc9;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   OPENING
+========================================= */
+
+.opening {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            circle at 50% 75%,
+            rgba(104, 65, 37, 0.4),
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            #090706 0%,
+            #120d0a 55%,
+            #24150e 100%
+        );
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.65) 1px,
+            transparent 1px
+        );
+
+    background-size: 120px 120px;
+
+    opacity: .18;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   MOON
+========================================= */
+
+.moon {
+    position: absolute;
+
+    width: 115px;
+    height: 115px;
+
+    right: 13%;
+    top: 13%;
+
+    border-radius: 50%;
+
+    background: #eee2c5;
+
+    box-shadow:
+        0 0 50px rgba(238,226,197,.15);
+}
+
+.moon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 115px;
+    height: 115px;
+
+    border-radius: 50%;
+
+    background: #100b09;
+
+    left: 28px;
+    top: -12px;
+}
+
+
+/* =========================================
+   OPENING TITLE
+========================================= */
+
+.opening-title {
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    transform: translateY(-100px);
+}
+
+.eyebrow {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 10px;
+
+    letter-spacing: 7px;
+
+    color: #8e806d;
+}
+
+.opening-title h1 {
+    margin-top: 15px;
+
+    font-family: "Pinyon Script", cursive;
+
+    font-size: clamp(75px, 10vw, 125px);
+
+    font-weight: 400;
+
+    color: #eee1c4;
+
+    text-shadow:
+        0 0 40px rgba(238,225,196,.08);
+}
+
+.opening-title p {
+    font-family: "Caveat", cursive;
+
+    font-size: 21px;
+
+    color: #9c8d79;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================
+   BIRD
+========================================= */
+
+.bird {
+    position: absolute;
+
+    width: 190px;
+    height: 120px;
+
+    left: -240px;
+    top: 53%;
+
+    z-index: 20;
+
+    cursor: pointer;
+
+    animation:
+        birdArrival 6s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+
+/* BODY */
+
+.bird-body {
+    position: absolute;
+
+    width: 100px;
+    height: 58px;
+
+    left: 35px;
+    top: 38px;
+
+    background: #090909;
+
+    border-radius:
+        60%
+        50%
+        55%
+        60%;
+
+    transform: rotate(-6deg);
+
+    box-shadow:
+        0 8px 15px rgba(0,0,0,.35);
+}
+
+
+/* HEAD */
+
+.bird-head {
+    position: absolute;
+
+    width: 48px;
+    height: 48px;
+
+    left: 115px;
+    top: 24px;
+
+    background: #090909;
+
+    border-radius: 50%;
+}
+
+
+/* EYE */
+
+.bird-eye {
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    left: 142px;
+    top: 37px;
+
+    background: #eee;
+
+    border-radius: 50%;
+
+    z-index: 5;
+}
+
+
+/* BEAK */
+
+.bird-beak {
+    position: absolute;
+
+    left: 153px;
+    top: 40px;
+
+    width: 0;
+    height: 0;
+
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+
+    border-left: 23px solid #b48a52;
+
+    z-index: 4;
+}
+
+
+/* WING */
+
+.bird-wing {
+    position: absolute;
+
+    left: 28px;
+    top: 22px;
+
+    width: 76px;
+    height: 40px;
+
+    background: #191919;
+
+    border-radius: 80% 20%;
+
+    transform-origin: 80% 80%;
+
+    animation: flap .35s infinite alternate;
+}
+
+
+/* =========================================
+   LETTER HELD BY BIRD
+========================================= */
+
+.bird-letter {
+    position: absolute;
+
+    left: 150px;
+    top: 52px;
+
+    width: 68px;
+    height: 45px;
+
+    background: #efe2c6;
+
+    transform: rotate(8deg);
+
+    box-shadow:
+        0 7px 20px rgba(0,0,0,.4);
+
+    z-index: 10;
+
+    transition:
+        transform .7s ease,
+        opacity .7s ease;
+}
+
+.bird-letter::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 34px solid transparent;
+    border-right: 34px solid transparent;
+
+    border-top: 21px solid #d1c0a0;
+}
+
+.mini-heart {
+    position: absolute;
+
+    right: 8px;
+    bottom: 5px;
+
+    color: #9b4a43;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   BIRD MESSAGE
+========================================= */
+
+.bird-message {
+    position: absolute;
+
+    bottom: 95px;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 21px;
+
+    color: #a59580;
+
+    opacity: 0;
+
+    animation:
+        messageAppear 1s ease 6s forwards;
+}
+
+
+/* =========================================
+   RECEIVE BUTTON
+========================================= */
+
+.receive-button {
+    position: absolute;
+
+    bottom: 35px;
+
+    z-index: 30;
+
+    padding: 14px 30px;
+
+    background: transparent;
+
+    border: 1px solid #74624c;
+
+    color: #d8c8aa;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        background .4s ease,
+        color .4s ease,
+        transform .4s ease,
+        opacity .5s ease;
+}
+
+.receive-button.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.receive-button:hover {
+    background: #e7dbc0;
+    color: #1a110d;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter {
+    display: none;
+
+    min-height: 100vh;
+
+    padding: 100px 20px;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(120,80,45,.13),
+            transparent 30%
+        ),
+        #1a120e;
+}
+
+
+/* =========================================
+   PAPER
+========================================= */
+
+.paper {
+    position: relative;
+
+    width: min(850px, 100%);
+
+    margin: auto;
+
+    padding:
+        80px
+        clamp(30px, 8vw, 100px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #f2e8d0,
+            #e7dbc0
+        );
+
+    color: #352920;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.6);
+
+    opacity: 0;
+
+    transform:
+        translateY(60px)
+        rotateX(5deg);
+
+    animation:
+        paperReveal 1.4s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+
+/* subtle paper texture */
+
+.paper::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            rgba(50,35,25,.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 7px 7px;
+
+    opacity: .25;
+}
+
+
+/* =========================================
+   PAPER HEADER
+========================================= */
+
+.paper-header {
+    margin-bottom: 55px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: #927c62;
+}
+
+
+/* =========================================
+   LETTER TITLE
+========================================= */
+
+.paper h2 {
+    margin-bottom: 40px;
+
+    font-family: "Pinyon Script", cursive;
+
+    font-size: 62px;
+
+    font-weight: 400;
+}
+
+
+/* =========================================
+   LETTER CONTENT
+========================================= */
+
+.letter-content {
+    font-family: "Caveat", cursive;
+
+    font-size: 25px;
+
+    line-height: 1.75;
+}
+
+.letter-content p {
+    margin-bottom: 32px;
+}
+
+
+/* =========================================
+   REVEAL
+========================================= */
+
+.reveal {
+    animation:
+        textAppear .9s ease both;
+}
+
+
+/* =========================================
+   SECRET WORD
+========================================= */
+
+.secret-word {
+    position: relative;
+
+    border: none;
+
+    background: transparent;
+
+    color: #352920;
+
+    font-family: inherit;
+
+    font-size: inherit;
+
+    cursor: pointer;
+}
+
+.secret-word::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 3px;
+
+    height: 1px;
+
+    background: #916c4e;
+}
+
+.secret-word.found {
+    color: #93453d;
+}
+
+
+/* =========================================
+   HEART SECRET
+========================================= */
+
+.secret-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin: 10px 0 40px;
+
+    transform: rotate(-2deg);
+}
+
+.heart-button {
+    border: none;
+
+    background: transparent;
+
+    color: #963e3c;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    transition:
+        transform .5s ease;
+}
+
+.heart-button:hover {
+    transform:
+        scale(1.25)
+        rotate(10deg);
+}
+
+#heartMessage {
+    opacity: 0;
+
+    color: #806d59;
+
+    font-size: 19px;
+
+    transition: opacity .6s ease;
+}
+
+#heartMessage.visible {
+    opacity: 1;
+}
+
+
+/* =========================================
+   CROSSED SENTENCE
+========================================= */
+
+.crossed-section {
+    position: relative;
+
+    margin:
+        50px 0;
+}
+
+.crossed-line {
+    display: inline;
+
+    position: relative;
+}
+
+.crossed-line::after {
+    content: "";
+
+    position: absolute;
+
+    left: -5px;
+    right: -5px;
+
+    top: 50%;
+
+    height: 3px;
+
+    background: #7c4c43;
+
+    transform: rotate(-2deg);
+}
+
+.question-button {
+    width: 29px;
+    height: 29px;
+
+    margin-left: 12px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #493329;
+
+    color: #eee1c5;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.question-button:hover {
+    transform: scale(1.1);
+}
+
+.crossed-answer {
+    display: none;
+
+    margin-top: 22px;
+
+    color: #79443b;
+
+    font-size: 27px;
+
+    animation: answerAppear .8s ease;
+}
+
+.crossed-answer.visible {
+    display: block;
+}
+
+
+/* =========================================
+   LAST PART
+========================================= */
+
+.last-part {
+    margin-top: 75px;
+
+    padding-top: 35px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(80,60,40,.25);
+}
+
+.last-line {
+    font-size: 23px;
+
+    margin-bottom: 22px;
+}
+
+.continue-button {
+    padding: 12px 28px;
+
+    border: none;
+
+    background: #392820;
+
+    color: #eee1c5;
+
+    font-family: "Cormorant Garamond", serif;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.continue-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.2);
+}
+
+
+/* =========================================
+   ENDING
+========================================= */
+
+.ending {
+    display: none;
+
+    margin-top: 100px;
+
+    padding-top: 70px;
+
+    border-top:
+        1px solid rgba(80,60,40,.25);
+
+    text-align: center;
+
+    animation:
+        endingReveal 1.5s ease forwards;
+}
+
+.ending-small {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 9px;
+
+    letter-spacing: 6px;
+
+    color: #9a866c;
+}
+
+.ending h3 {
+    margin-top: 25px;
+
+    font-family: "Pinyon Script", cursive;
+
+    font-size: 55px;
+
+    font-weight: 400;
+}
+
+.ending p {
+    margin: 20px auto;
+
+    max-width: 500px;
+
+    font-size: 22px;
+}
+
+.birthday {
+    margin-top: 60px;
+
+    font-family: "Pinyon Script", cursive;
+
+    font-size: 48px;
+}
+
+.birthday span {
+    color: #8f403c;
+}
+
+.big-heart {
+    margin-top: 35px;
+
+    color: #963f3d;
+
+    font-size: 42px;
+
+    animation:
+        heartbeat 1.5s infinite;
+}
+
+.signature {
+    margin-top: 30px;
+
+    font-family: "Pinyon Script", cursive;
+
+    font-size: 50px;
+
+    text-align: right;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes birdArrival {
+
+    0% {
+        left: -240px;
+        transform:
+            translateY(40px)
+            rotate(-5deg)
+            scale(.8);
+    }
+
+    20% {
+        transform:
+            translateY(-35px)
+            rotate(3deg)
+            scale(.9);
+    }
+
+    45% {
+        transform:
+            translateY(25px)
+            rotate(-3deg)
+            scale(1);
+    }
+
+    70% {
+        transform:
+            translateY(-20px)
+            rotate(3deg)
+            scale(.95);
+    }
+
+    100% {
+        left: calc(50% - 95px);
+
+        transform:
+            translateY(0)
+            rotate(0)
+            scale(1);
+    }
+}
+
+
+@keyframes flap {
+
+    from {
+        transform: rotate(-20deg);
+    }
+
+    to {
+        transform: rotate(10deg);
+    }
+}
+
+
+@keyframes messageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes paperReveal {
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            rotateX(0);
+    }
+}
+
+
+@keyframes textAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes answerAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes endingReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .opening-title {
+        transform: translateY(-80px);
+    }
+
+    .opening-title h1 {
+        font-size: 75px;
+    }
+
+    .moon {
+        width: 80px;
+        height: 80px;
+
+        right: 7%;
+        top: 12%;
+    }
+
+    .moon::after {
+        width: 80px;
+        height: 80px;
+    }
+
+    .bird {
+        transform: scale(.75);
+    }
+
+    .paper {
+        padding:
+            55px
+            25px;
+    }
+
+    .paper h2 {
+        font-size: 52px;
+    }
+
+    .letter-content {
+        font-size: 22px;
+    }
+
+    .ending h3 {
+        font-size: 45px;
+    }
+
+    .birthday {
+        font-size: 40px;
+    }
+
+}
